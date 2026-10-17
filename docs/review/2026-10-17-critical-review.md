@@ -13,6 +13,15 @@ The skill follows its research closely on how to run a panel: isolated generatio
 3. Its measurement tools do not work in a normal session (no API keys), and the main one measures word overlap, not difference in argument.
 4. It is very heavy for most real uses: 11 stages, two Do-It engagements, about 1,800 lines of instructions.
 
+## Correction after testing (17 Oct 2026, same day)
+
+Before editing, six agents walked the unedited skill through three requests (a sourced briefing, a skill review, a specialist hire), two runs each. Finding 1 below was partly wrong. The skill did NOT hire a panel for the sourced briefing. Both runs classed it as factual work, refused the panel and wrote it in-house. The real gaps were:
+- no check of an in-house sourced answer against its sources;
+- no way to run a panel the user explicitly asked for as a trial;
+- every seat on one model family.
+
+The fixes were reshaped to match. There is no new ninth task family. Instead, a SOURCE CHECK runs on every sourced output, door 4 has a trial path, and the critic sits on a second model family. The test transcripts are in the working tree only (`.worktrees/tests/`, not committed).
+
 ## The field evidence the skill does not yet know about
 
 | Test | What was compared | Result |

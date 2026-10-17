@@ -34,8 +34,8 @@ user in the warm, plain voice of `references/voice.md`.
   (progressive exposure; kernel rule 4).
 - **Critic and combination logic** — whether a critic seat exists and how outputs
   are combined (`references/synthesis-modes.md`).
-- **Model constraints** — where different model families are required and why
-  (high-stakes normative work).
+- **Model constraints** — which seats run on a second model family (the critic
+  by default; at least one lens for high-stakes normative work) and why.
 - **Budgets** — time, context, and iteration budgets (kernel rule 10).
 - **Human checkpoints** — the consequential decisions where the user is consulted.
 - **Coverage and deliberate exclusions** — which axes the team covers and which it

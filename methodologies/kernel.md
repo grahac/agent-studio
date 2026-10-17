@@ -71,7 +71,7 @@ not mandated by the kernel:
 
 - whether a critic / devil's-advocate is present;
 - whether the work uses more than one round;
-- whether a high-stakes normative task requires different model families;
+- whether a lens (beyond the default second-family critic) runs on another model family;
 - whether a creative result is selected by a human (for creative work it is —
   `references/hard-rules.md`);
 - how task-specific outputs are combined (`references/synthesis-modes.md`).

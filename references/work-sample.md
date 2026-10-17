@@ -33,7 +33,11 @@ character identity, NO decorative biography. Write to
 Default: ONE bounded assignment — the smallest representative slice of the job
 from workflow-spec.md.
 
-1. The in-house assistant performs the slice with the best appropriate playbook.
+0. Inputs: use the user's real material for the slice; ask for it. Non-interactive
+   with none supplied: write a synthetic fixture, and label the verdict as
+   tested on synthetic material.
+1. A fresh subagent performs the slice as the in-house assistant, with the best
+   appropriate playbook (not the orchestrator, which knows the A/B plan).
 2. A fresh subagent performs the same slice AS the prototype — same model, same
    information, same tools, same reasonable effort. Its prompt opens with the
    SUBAGENT PROMPT PREAMBLE from `hard-rules.md`.
@@ -41,7 +45,10 @@ from workflow-spec.md.
    `agent-studio-out/<slug>/work-samples/<role>/sample-A.md` and `sample-B.md`.
    The A/B assignment is held in the orchestrator's context only — NOT written
    anywhere the evaluator could read.
-4. The user (or an evaluator subagent that has NOT seen either generation)
+4. Both samples pass the SOURCE CHECK first when the slice is sourced
+   (`hard-rules.md`).
+5. The user (or an evaluator that has NOT seen either generation, on the second
+   model family by default)
    judges A vs B on the Evidence Card's evaluation signal: 2-3 criteria tied to
    the intended persona effect, plus the one harm check. Write the judgment to
    `verdict.md`; only THEN write the mapping to `key.md` and unblind.
@@ -50,6 +57,14 @@ Scaling: low-stakes reversible roles = 1 sample. Frequently reused or
 moderately consequential = 2-3 cases. High-stakes = hand to a dedicated
 evaluation process — do not improvise one here. Never build a full parallel
 non-persona workflow by default.
+
+## Door 4 trials
+
+When a one-off panel runs as a trial (SKILL.md, door 4), the same blind
+protocol applies with two changes: sample A/B are the in-house answer and the
+panel's synthesis (personas allowed, since the user asked for them), and both
+pass the SOURCE CHECK first when sourced, so the judge compares checked
+outputs. Record the verdict as a row in `field-evidence.md` (consent first).
 
 ## Outcomes
 

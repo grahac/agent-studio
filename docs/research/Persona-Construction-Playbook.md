@@ -98,4 +98,4 @@ Widen the option space with diverse structured personas; add critique to sharpen
 - "Stance is the best lever" rests on **one small single-model study**; the "select > blend" law on **one 0-citation preprint** scoped to recoverable-answer tasks.
 - Practitioner blog claims are unmeasured; two zylos claims ("~100 turns", "Big-Five maintainability") are misattributed to their cited papers. Weight `[evidence]` and `[anthropic]` over `[practitioner]`.
 
-Companion files on Desktop: `Persona-External-Sources-Digest.md`, `Persona-Ensembles-Research-Bible.md`, `Persona-Construction-Research-Bible.md`, `Perspective-Synthesis-Research-Bible.md`.
+Companion files (in `docs/research/`): `Persona-External-Sources-Digest.md`, `Persona-Ensembles-Research-Bible.md`, `Persona-Construction-Research-Bible.md`, `Perspective-Synthesis-Research-Bible.md`.
