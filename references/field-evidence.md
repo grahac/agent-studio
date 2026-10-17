@@ -50,3 +50,11 @@ writing (same consent rule as the roster).
 - Result: fidelity: panel WORSE (3.3 vs 7.3 on 10). The judge's verdict: persona panels at the hook stage are refuted for this use.
 - What fixed it: a separate evidence reviewer holding the source (fidelity 9.5 on re-test, 2026-09-23). Now the SOURCE CHECK in `hard-rules.md`.
 - Source: Narrative Engine ablation report and 2026-09-23 re-test (local, not in this repo)
+
+### 2026-10-17: weekly multi-sector briefing (sector blocks + cross-sector summary)
+- Family: Factual, checkable, or procedural work (source-bound writing), run as a trial on the user's request
+- Compared: (a) per-sector block: retired-executive persona per sector vs a plain writer, same rules and evidence, 13 sectors; (b) cross-sector summary: 13 isolated persona takes then a house-persona synthesis vs one plain pass over all material. All authors on one model family; judge, source checks, coverage and critic on a second family
+- Judged by: blind judge on logic, insight, clarity (plus stated disagreement for the summary); separate source check per output; claim coverage check
+- Result: cross-sector summary: panel BETTER on insight and stated disagreement, fewer unsupported claims, slightly lower clarity. Sector blocks: MIXED (persona better in 7 of 13, plain in 6): persona better on insight, worse on logic, more unsupported causal claims; the only contradicted claim came from a persona's "what it means for operators" line
+- What fixed it: one synthesis revision naming the silenced lenses plus the critic's notes (first draft dropped 4 of 13 lenses; after revision all present). Recommended: a separate check on any interpretive callout, since code checks on figures do not read it
+- Source: user's local trial report (not in this repo)
