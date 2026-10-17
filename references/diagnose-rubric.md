@@ -60,6 +60,8 @@ If the target already dispatches agents, check and report:
 - **Critic**: is there a dedicated critic/adversary/refuter stage?
 - **Family**: is any adversary the same model family as the generator (flag)?
 - **Combine mode**: dissent-carrying, vote, selection, or a naive blend (flag)?
+- **Baseline**: is the panel ever compared with a single-model pass (flag if never)?
+- **Sources**: if the stage writes from sources, is a separate SOURCE CHECK run (flag if not)?
 
 ## Creative stages
 
@@ -84,8 +86,11 @@ Write the report to `agent-studio-out/diagnosis-<slug>.md` in exactly this shape
 ## Where they would be waste
 <the mechanical stages, with the debate-loses-to-voting reason>
 
-## Gaps
-<missing critic, same-family adversary, no output-stage diversity check, etc.>
+## Process gaps
+<method, check and tool gaps found by the Stage 3 review: missing checks mistaken for missing critics, absent recall or stopping tests, unclear handoffs>
+
+## Multi-agent gaps
+<missing critic, same-family critic, no baseline comparison, no SOURCE CHECK on sourced output, no claim coverage check, etc.>
 
 Next: /agent-studio — door 2 (existing workflow) runs the full staffing lifecycle from this diagnosis.
 ```

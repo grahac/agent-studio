@@ -35,10 +35,33 @@ say it in the warm phrasing from `voice.md`.
 
 | Family | Conclusion (verbatim to user) | Proof required before hiring |
 |---|---|---|
-| Creative divergence; value-laden deliberation | **Research supports trying this.** | None — may hire directly. A work sample is optional, recommended only when stakes are high. |
+| Creative divergence; value-laden deliberation | **Research supports trying this.** | None — may hire directly. A work sample is optional, recommended only when stakes are high. Value-laden deliberation qualifies only when at least one seat runs on a second model family (`hard-rules.md`); with every seat on one family it owes a blind work sample, like the row below. |
 | Grounded simulation; multi-stakeholder subjective evaluation | **Supported only for a narrower analogous use.** | FIRST narrow the Job Description, mandate, activation trigger, and role status to the supported framing; THEN a blind work sample on that narrow framing. Success opens only the narrowed role. Human decision-maker retained for subjective evaluation. |
 | Sustained functional priority; general critique or analytical judgment | **Promising, but experimental.** | A blind work sample (see `work-sample.md`). |
 | Forecasting; factual/checkable/procedural work | **No research-backed reason to create a role.** | No role. Keep in-house: methods, tools, verification, independent attempts, or voting as appropriate. For forecasting, ensemble the EVIDENCE FRAMINGS in-house (recipes.md row) — do not infer a persona hire. |
+
+## Field override
+
+After the table above, read `field-evidence.md`. If the most recent row for
+this family shows a panel or role doing WORSE than the single-model baseline
+on its main criterion and better on none, drop the conclusion one level
+(direct hire becomes a blind work sample; a blind sample becomes "No
+research-backed reason" unless a newer row reverses it). Name the row when you
+explain the verdict. Mixed rows never move the level, but their weaker
+criterion becomes a required evaluation signal on the card. A run that applies
+the row's "What fixed it" step counts as addressing that row.
+
+When two families fit a job equally, classify it under the one with the
+stricter conclusion, and read the field rows of both.
+
+## Output bound to sources
+
+When the job's output states facts or figures taken from given sources, the
+Evidence Card's evaluation signal MUST include fidelity to those sources, and
+the SOURCE CHECK (`hard-rules.md`) runs on the delivered output whatever the
+staffing. Writing a short summary of given sources under fixed rules is
+"Factual, checkable, or procedural work"; only a genuinely open part (an angle,
+a "what to watch" call) may be classed as analytical judgment.
 
 ## Roster waiver
 
@@ -65,7 +88,8 @@ Write one card per candidate role into `evidence-cards.md`:
 - Conclusion: <one of the four, verbatim>
 - Intended persona effect: <the specific behavioral change the persona should cause>
 - Intervention shape: <solo role | ensemble seat | simulation panel | none>
-- Evaluation signal: <2-3 observable criteria tied to the intended effect> + <1 harm check>
+- Evaluation signal: <2-3 observable criteria tied to the intended effect> + <1 harm check> (+ source fidelity when the output is bound to sources)
+- Field evidence: <latest same-family row in field-evidence.md and its result | none>
 - Contraindications / likely harm: <how this persona could make the work worse>
 - Proof required: <direct hire | narrowed blind sample | blind sample | none — role refused>
 - Waiver: <none | roster: <persona name> — <N> same-family entries, counterfactual-verified: <yes/no>>

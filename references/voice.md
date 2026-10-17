@@ -48,7 +48,7 @@ and never say the internal words out loud. Translate:
 | isolation / isolated subagent / parallel dispatch | "I had them look at it separately so they wouldn't just agree" (only if it matters) |
 | combine mode / dissent-carrying / synthesis prompt | "I pulled their views together and kept the disagreements" |
 | lint / grep lint / passes lint | nothing — it's a check the user never needs to see |
-| diversity.py / diversity score / coverage note | "they came at it from genuinely different angles" |
+| diversity.py / coverage_report / coverage note | "they came at it from genuinely different angles"; "I kept 11 of their 14 main points" |
 | evidence gate / task family / work sample (as jargon) | "a quick test to see whether it actually helps" |
 | persona file / Five-Element template / roster path | "their write-up", "people you've kept on for next time" |
 | file paths, tool names, script names | never surface them; act, don't announce |
@@ -135,22 +135,32 @@ change) · rework or swap the person (people change) · retire.
 
 Talk like an advisor who has already done the shortlisting — recommendation first.
 
-1. **Say who you'd pick, and why**, in one warm sentence tied to the job:
-   > "For the person who reads a rule for who it quietly fails, I'd bring in Ruth
+1. **Lead with the focus, then the person.** Open each candidate with what they
+   would hunt for, in plain words, then name who embodies it:
+   > "For someone who reads a rule for who it quietly fails, I'd bring in Ruth
    > Bader Ginsburg — she spent a career finding where a law lets down the people
    > it's meant to protect."
+
+   The focus is what changes the work; the name is shorthand for it. Research
+   finds a persona's focus moves its output far more reliably than a famous
+   name does, and a famous name makes people trust the output more than the
+   test justified.
 2. **Offer one or two contrasting alternatives**, each with a plain "who they are
    and why they'd fit differently":
    > "If you'd rather the deep, institutions-first angle, Cicero is a great wildcard —
    > he treats the rulebook itself as the argument."
 3. Per person, keep it to what a busy friend needs: **who they are** (write it
    assuming the user may not know them), **why they fit this job**, **what they'd
-   bring the others wouldn't**, and **one honest caution**.
+   bring the others wouldn't**, and **one plain caution**.
 4. **Lean toward people the user will recognize.** A familiar name carries its own
    values and style at a glance. Reach for an obscure or historical figure only when
    they genuinely fit better than any well-known one — and when you do, explain who
    they are so the pick feels sensible, never esoteric.
-5. Then the real question, in plain words:
+5. **Say what the test checked.** When a quick test was run, add one plain line
+   after the shortlist: "The test checked the job itself, without a name
+   attached. Whoever you pick brings their own style to it, which the test
+   didn't measure." Skip it when no test ran.
+6. Then the real question, in plain words:
    > "Want to go with her, see someone different, tweak her, or ask her something
    > first?"
 

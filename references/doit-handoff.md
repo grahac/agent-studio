@@ -83,7 +83,9 @@ Agent Studio (not Do-It) writes `staffed-spec.md` at Stage 9:
 - Combine: <mode from recipes.md row> — never naive-mean-blend
   (synthesis-modes.md).
 - Debate: capped at one round with a stopping rule.
-- Recipe-specific: <critic seat | human selection | different model families | none>.
+- Second model family: critic on Codex via the CODEX SEAT COMMAND (hard-rules.md), unless a creative row.
+- SOURCE CHECK before delivery when the output states facts from given sources.
+- Recipe-specific: <critic seat | human selection | lens on second family | none>.
 ## Handoff contracts                   <- for sequential/complementary roles
 - <role A> -> <role B>: <artifact passed, acceptance condition>
 ```

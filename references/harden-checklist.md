@@ -11,7 +11,7 @@ NOT a bias failure — but a CLICHE persona is (archetype collapse flattens
 diversity). See hard-rules.md #Guardrails switch by mode.
 Recommend-only: the output is a report; the target is never modified.
 
-## The eleven checks
+## The thirteen checks
 
 1. **Lenses generated in isolation** (not persona-swaps in one shared context)?
    [source: hard-rules.md #Generate lenses in strict isolation; #Never persona-swap in one shared context]
@@ -28,9 +28,9 @@ Recommend-only: the output is a report; the target is never modified.
 3. **Members genuinely heterogeneous** (stance/values), not surface variants?
    [source: hard-rules.md #Members must be genuinely heterogeneous]
    Severity: MED. Fix: re-author members to differ in stance/values, not tone.
-4. **Different model families for high-stakes normative panels?**
-   [source: hard-rules.md #Different model families for high-stakes normative panels; recipes.md #Normative / ethics row]
-   Severity: MED. Fix: move at least the adversary to another model family.
+4. **Critic on a second model family** (and, for high-stakes normative panels, at least one lens too)?
+   [source: hard-rules.md #A second model family on every judgment panel; recipes.md #Normative / ethics row]
+   Severity: MED. Fix: run the critic through the CODEX SEAT COMMAND.
 5. **Combine mode matches THE RECIPE'S declared mode?** Score against the recipe
    row, not against dissent-carrying universally. Mismatch = FAIL (HIGH when the
    recipe called for dissent-carrying, MED otherwise); match = PASS. No declared
@@ -43,9 +43,9 @@ Recommend-only: the output is a report; the target is never modified.
 7. **Round cap + stopping rule on any debate?**
    [source: hard-rules.md #Anti-conformity is first-class]
    Severity: MED. Fix: cap at one round; stop when a round adds no new labeled dissent.
-8. **Diversity measured at the OUTPUT stage**, not just generation?
-   [source: hard-rules.md #Always co-report quality AND coverage; synthesis-modes.md #"measure diversity at the OUTPUT stage"]
-   Severity: LOW. Fix: run the diversity metric on the post-synthesis set too.
+8. **Claim coverage checked on the OUTPUT** (each lens's points traced into the synthesis)?
+   [source: hard-rules.md #Always co-report quality AND coverage; synthesis-modes.md #Claim coverage check]
+   Severity: MED. Fix: run the claim coverage check and `coverage_report.py` after synthesis.
 9. **Quality AND coverage co-reported** (not one scalar)?
    [source: hard-rules.md #Always co-report quality AND coverage]
    Severity: LOW. Fix: report a quality note and a coverage/diversity note together.
@@ -56,6 +56,12 @@ Recommend-only: the output is a report; the target is never modified.
     separate from task context)? N-A for one-shot panel lenses.
     [source: persona-template.md #Long-running use (drift)]
     Severity: LOW. Fix: re-inject the persona file at intervals; re-anchor, do not reset.
+12. **Baseline comparison** (the panel's output compared with a plain single-model pass on the same brief)?
+    [source: hard-rules.md (SKILL.md "Baseline"); field-evidence.md]
+    Severity: MED. Fix: add one single-model baseline run and report what the panel added over it.
+13. **SOURCE CHECK on sourced output** (claims checked against the sources by a separate checker)? N-A when the output states no facts from given sources.
+    [source: hard-rules.md #Check every sourced output against its sources]
+    Severity: HIGH. Fix: add the SOURCE CHECK PROMPT step before delivery.
 
 ## Report template
 

@@ -14,15 +14,27 @@ each lens is produced in its own subagent with no cross-talk before the combine 
 | Normative / ethics / value-laden | values | 3-5 | parallel isolated | preserve disagreement, no forced consensus | use different model families |
 | Forecasting / estimation | evidence framing | 5-9 | parallel isolated | variance-aware aggregate, not naive mean | keep the private/minority signal |
 | Artifact / skill review | review dimension | 3-6 + verifier | parallel isolated, then verify stage | dedup + severity-rank | verify each finding adversarially |
+| Coverage review (find what is missing against a scope) | review dimension | single-model checklist pass + 3-5 lenses + verifier | checklist pass FIRST (walk every scope item and named technique, mark absent/thin), then parallel isolated lenses for depth | union: checklist gaps first and outside the cap, then lens gaps severity-ranked under the cap | panels skip the obvious; the checklist catches it (field-evidence.md, 2026-08-26) |
 
 Two rules cut across every row: **generate in isolation**, and **never
 naive-mean-blend** the results (see `synthesis-modes.md`). Panel size beyond ~6
 generators mostly adds cost, not coverage, except forecasting where extra
 independent samples help.
 
-The "Artifact / skill review" row serves the Existing-workflow path's review stage
-(legacy "diagnose"): when a reviewed workflow contains a review/audit stage, this
-is the recipe it lands on.
+The "Artifact / skill review" and "Coverage review" rows describe panels INSIDE a
+workflow being designed or reviewed. They do not license dispatching a panel
+for this skill's own diagnosis: an analysis-only diagnosis (door 2) stays a
+single in-house pass unless the user asks for a panel, in which case it runs as
+a trial (SKILL.md, door 4 "Trial").
+
+Choosing between them: finding what is missing (gaps, coverage) uses
+"Coverage review"; judging the quality of an artifact uses "Artifact / skill
+review". The single-model checklist pass belongs to the panel side; a
+baseline must never see it.
+
+Every row except the creative ones runs its critic on a second model family by
+default (hard-rules.md). Every row whose output states facts from given sources
+gets the SOURCE CHECK (hard-rules.md).
 
 Creative rows run under the flavor-forward guardrails; judgment rows under the
 strict rulebook. See hard-rules.md #Guardrails switch by mode.

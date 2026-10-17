@@ -65,6 +65,7 @@ Personified teams work best when their members are genuinely different, produce 
 | **High-stakes decisions without human review** | Personas can introduce bias, stereotype groups, become overconfident, or make a subjective preference sound authoritative. |
 | **Large panels and open debate** | Agents conform, repeat one another, and manufacture consensus—even when nobody asks them to agree. More capable models are not immune. |
 | **Long, unanchored conversations** | Persona behavior drifts as recent context overwhelms the original character instructions. |
+| **Writing from sources** | Personas add detail the sources do not support. In our own test a three-persona panel cut fidelity to the source from 7.3 to 3.3 out of 10; a separate source checker restored it. |
 
 These failures follow from how personas work:
 
@@ -224,7 +225,8 @@ No network library is required. Pages are fetched as raw text with `curl`; WebFe
 Two small Python helpers handle work that is unreliable inside a prompt:
 
 - `scripts/exemplar_find.py find --archetype "fashion designer"` returns de-duplicated exemplar leads with titles and source URLs. Its `corpus` command pulls selected pages as stripped text.
-- `scripts/diversity.py FILE1 FILE2 [...]` measures mean pairwise semantic distance and reports per-pair detail, helping detect a panel or synthesis that collapsed into one voice.
+- `scripts/coverage_report.py <coverage.json>` scores the claim coverage check: how many of each lens's distinct points survived into the synthesis, and which were dropped. This is the main check that a synthesis did not flatten the panel.
+- `scripts/diversity.py FILE1 FILE2 [...]` (optional) measures mean pairwise distance between outputs. It uses OpenAI embeddings when `OPENAI_API_KEY` is set and falls back to word overlap otherwise.
 
 Run the repository checks with:
 
@@ -245,6 +247,17 @@ Every inline citation above is drawn from this corpus, which grades each claim b
 | [Persona-External-Sources-Digest.md](docs/research/Persona-External-Sources-Digest.md) | Reconciled external sources on persona selection, construction, and long-run consistency. |
 
 The research bibles were produced with a retrieval-first pipeline, citation verification, and independent adversarial review. Claims inside the corpus are labeled by evidence strength; press-sourced and unverified claims remain marked as such.
+
+### What we learned in use
+
+The research corpus says what others found. [`references/field-evidence.md`](references/field-evidence.md) records what happened when this skill's panels were tested against a plain single-model pass on real work. The first two results changed the skill (October 2026):
+
+- A persona panel writing from a source lost fidelity; a separate checker holding the sources fixed it. Every sourced output now gets that **source check**, whoever wrote it.
+- A persona review panel went deeper than one model but missed obvious items the single model caught. Coverage reviews now run a **single-model checklist pass first**, then the panel.
+
+Every panel run now also produces a **single-model baseline**, so you can see what the panel added. Its **critic runs on a second model family** (Codex) by default. A **claim coverage check** reports how many of each member's points reached the final answer. If you ask for a panel where the research is weak, Agent Studio offers it as a **trial**, judged blind against the plain answer. The result goes into the field-evidence log.
+
+A critical review of the skill against its research is in [`docs/review/`](docs/review/).
 
 The product’s design history, implementation plans, and run ledgers live in [`docs/superpowers/`](docs/superpowers/).
 

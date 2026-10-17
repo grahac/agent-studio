@@ -55,8 +55,10 @@ persona fits when its character core matches the JD's values and experience
 profile — never force a fit by editing the core (that is a candidate-fit
 question, settled by hiring someone else or adjusting openly with the user).
 
-Present a fitting rehire FIRST, alongside fresh candidates, with its track
-record summarized. The roster suggests; the evidence gate decides.
+Include fitting rehires on the slate alongside fresh candidates, labelled as
+kept, with their track record summarized ("kept, not yet reviewed" when it is
+empty). Lead with your recommendation per `voice.md`, which may or may not be
+the rehire. The roster suggests; the evidence gate decides.
 
 Waiver check (feeds `evidence-gate.md`): count track-record entries in the
 JD's task family with non-empty "Contributions retained downstream". Waiver

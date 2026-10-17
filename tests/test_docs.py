@@ -5,6 +5,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SKILL = (ROOT / "SKILL.md").read_text()
 REFS = ROOT / "references"
+# The lifecycle detail moved out of SKILL.md (2026-10-17); SKILL.md loads it.
+LIFECYCLE = (REFS / "full-lifecycle.md").read_text()
+SKILL_ALL = SKILL + LIFECYCLE
 
 NEW_REFS = [
     "evidence-gate.md", "job-description.md", "work-sample.md",
@@ -14,6 +17,7 @@ TEAM_REFS = ["team-charter.md", "team-package.md"]
 ALL_REFS = NEW_REFS + [
     "hard-rules.md", "recipes.md", "synthesis-modes.md",
     "diagnose-rubric.md", "harden-checklist.md", "persona-template.md",
+    "field-evidence.md", "full-lifecycle.md",
 ] + TEAM_REFS
 METHODOLOGY = ROOT / "methodologies"
 
@@ -36,7 +40,7 @@ def test_four_doors_present():
 
 def test_eleven_stages_present():
     for n in range(1, 12):
-        assert re.search(rf"Stage {n}\b", SKILL), f"Stage {n} missing"
+        assert re.search(rf"Stage {n}\b", SKILL_ALL), f"Stage {n} missing"
 
 
 def test_evidence_conclusions_verbatim():
@@ -120,7 +124,7 @@ def test_skill_has_durability_and_team_machinery():
                   "scripts/team_validate.py", "references/team-charter.md",
                   "references/team-package.md", "templates/team.json.md",
                   "templates/team-readme.md"]:
-        assert token in SKILL, f"SKILL.md missing: {token}"
+        assert token in SKILL_ALL, f"SKILL.md/full-lifecycle.md missing: {token}"
 
 
 def test_persona_three_layer_and_mode_switch():
@@ -154,3 +158,55 @@ def test_third_party_notices_attribution():
     assert "Agent Designer" in text
     assert "MIT" in text
     assert "Braydon McCormick" in text
+
+
+def test_core_skill_stays_short():
+    assert len(SKILL.splitlines()) <= 150, "SKILL.md core grew past 150 lines"
+
+
+def test_description_states_triggers_only():
+    desc = SKILL.split("description:", 1)[1].split("\n", 1)[0]
+    assert desc.strip().startswith("Use when")
+    assert len(desc) <= 1024
+
+
+def test_source_check_rule_and_prompt():
+    hr = (REFS / "hard-rules.md").read_text()
+    assert "## Check every sourced output against its sources" in hr
+    assert "## SOURCE CHECK PROMPT" in hr
+    assert "SOURCE CHECK" in SKILL
+    gate = (REFS / "evidence-gate.md").read_text()
+    assert "## Output bound to sources" in gate
+
+
+def test_second_family_critic_command():
+    hr = (REFS / "hard-rules.md").read_text()
+    assert "CODEX SEAT COMMAND" in hr
+    assert "< /dev/null" in hr, "codex must run with stdin closed"
+    assert "--model" in hr and "Do not pass `--model`" in hr
+
+
+def test_door4_runs_a_baseline_and_offers_trials():
+    door4 = SKILL.split("## One-off panel (door 4)", 1)[1].split("## Reference map", 1)[0]
+    assert "baseline.md" in door4
+    assert "**Trial:**" in door4
+    assert "coverage_report.py" in door4
+
+
+def test_field_evidence_seeded_and_read_by_gate():
+    fe = (REFS / "field-evidence.md").read_text()
+    assert fe.count("\n### 20") >= 2, "field-evidence.md needs its seed rows"
+    gate = (REFS / "evidence-gate.md").read_text()
+    assert "## Field override" in gate and "field-evidence.md" in gate
+
+
+def test_claim_coverage_check_documented():
+    sm = (REFS / "synthesis-modes.md").read_text()
+    assert "## Claim coverage check" in sm
+    assert "coverage_report.py" in sm
+    assert '"status": "kept|dropped|contradicted"' in sm
+
+
+def test_coverage_review_recipe_row():
+    rec = (REFS / "recipes.md").read_text()
+    assert "| Coverage review" in rec

@@ -35,7 +35,7 @@ capable models conform more. Counter it deliberately:
 Do not average, summarize-to-consensus, or "combine these into one" without
 preserving dissent. Use the recipe's combine mode; the default is dissent-carrying
 synthesis (majority view PLUS explicitly labeled minority and unique findings).
-De-duplicate lenses by embedding BEFORE combining. See `synthesis-modes.md`.
+De-duplicate large sets (8+ items) before combining. See `synthesis-modes.md`.
 
 ## NO WebFetch — ever
 
@@ -45,10 +45,40 @@ returns a summarizer's paraphrase and drops exact wording. Fetch raw PAGES with
 libraries and are fine; the prohibition is on summarizer-mediated page
 fetching.) This prohibition is carried verbatim into every subagent prompt.
 
+## Check every sourced output against its sources
+
+Personas change what a model concludes, and constructed personas add detail no
+source supports. Panels also lost source fidelity in this skill's own field
+test (`references/field-evidence.md`). So any output that states facts,
+figures or claims taken from given sources, whether written in-house or by a
+panel, passes a SOURCE CHECK before the user sees it:
+
+1. A fresh checker that holds the sources and the draft, and nothing else (not
+   a persona, not the critic, not the writer), gets the SOURCE CHECK PROMPT
+   below. Run it on the second model family when available (CODEX SEAT
+   COMMAND); otherwise a fresh subagent.
+2. Remove or fix every claim marked unsupported or contradicted, then re-run
+   the check on the changed lines only.
+3. Tell the user, in one plain line, that every figure was checked against the
+   sources and how many lines changed.
+
+A panel's lens outputs are not checked one by one; the check runs on what the
+user will receive (the synthesis or the chosen draft), and on both samples
+before any blind judging. It checks claims presented as facts about the
+sources or the material under review. Recommendations, opinions and
+general-knowledge reasoning are not checked, but must not be worded as if a
+source said them. When the user requires figures only from the sources, also
+check mechanically that every number in the delivered text appears in a
+source.
+
 ## Always co-report quality AND coverage
 
 Never report a single scalar for a panel result. Always report a quality note AND a
-coverage/diversity note (from `diversity.py`), so flattening is visible.
+coverage note. The coverage note comes from the claim coverage check
+(`synthesis-modes.md`, scored by `scripts/coverage_report.py`): how many of the
+lenses' distinct points survived, and which were dropped. `diversity.py` is an
+optional extra; when it runs without an embeddings key it measures word overlap
+only, and must say so.
 
 ## Members must be genuinely heterogeneous
 
@@ -57,12 +87,35 @@ Surface-variant members (the same perspective in different costumes) add cost
 without adding diversity; the differences must change what each lens attends to
 and concludes, not just its tone.
 
-## Different model families for high-stakes normative panels
+## A second model family on every judgment panel
 
-Same-model swarms are low-variance and collude fast. When the work is
-normative or value-laden and the stakes are high, run members (or at minimum
-the critic/adversary) on different model families. Flag any same-family
-adversary as a weakness.
+Same-model swarms are low-variance and collude fast, and the strongest evidence
+for value-diverse panels used a different model per seat. So:
+
+- Every panel outside the creative rows runs its CRITIC on a second model
+  family by default. The second family available here is Codex (OpenAI), run
+  through the `codex` CLI. Use the CODEX SEAT COMMAND below.
+- High-stakes normative or value-laden panels also move at least one GENERATING
+  lens to the second family.
+- If `codex` is not installed or fails, run the critic on the main model, say
+  so in the quality note ("critic ran on the same model family"), and carry on.
+  Never block a run on it.
+- The blind judge of a trial or work sample also runs on the second family
+  by default, since both samples usually come from the main model.
+- A "verifier" in a recipe row IS the critic seat: CRITIC PREAMBLE, plus
+  "confirm or refute each finding with evidence from the material under review".
+- Flag any same-family adversary as a weakness in audits.
+
+CODEX SEAT COMMAND (prompt in a file; stdin closed, or `codex` waits on it):
+
+```
+codex exec --sandbox read-only -o <run-dir>/<seat>.md "$(cat <run-dir>/<seat>-prompt.md)" < /dev/null
+```
+
+Do not pass `--model`; a ChatGPT-account login rejects explicit model names.
+Seat names: `critic`, `judge`, `source-check-<file>`; each reads
+`<seat>-prompt.md` and writes `<seat>.md`.
+The prompt file holds the same preamble and inputs a Claude seat would get.
 
 ## Vet the population, not just each member
 
@@ -172,4 +225,19 @@ their outputs below. Rules:
 4. Never use WebFetch (curl raw pages only if you must fetch).
 5. End with: the single strongest objection to the majority view, and the
    minority point most worth preserving.
+```
+
+## SOURCE CHECK PROMPT
+
+```
+You are a source checker. You see the sources and one draft. You did not write
+the draft. Check only what the draft presents as fact about the sources or the
+material under review; skip recommendations and opinions. For every such
+figure, date, name and factual claim:
+1. Quote the draft words.
+2. Mark it SUPPORTED (quote the source words that support it), UNSUPPORTED (no
+   source says this) or CONTRADICTED (a source says otherwise; quote it).
+3. Treat inference as a claim: "delayed", "because", "first time" need a source.
+Do not judge style. Do not rewrite the draft. Never use WebFetch.
+End with: N claims checked, N supported, N unsupported, N contradicted.
 ```
