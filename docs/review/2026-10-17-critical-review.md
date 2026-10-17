@@ -26,8 +26,8 @@ The fixes were reshaped to match. There is no new ninth task family. Instead, a 
 
 | Test | What was compared | Result |
 |---|---|---|
-| Narrative Engine hook panel, 16 Sep 2026 (`~/Projects/family-office/agent-studio-out/ablation/REPORT.md`) | 3-lens persona panel writing deck hooks vs a ~300-word single-writer prompt, blind judge | Panel made fidelity to the source worse (3.3 vs 7.3 on 10). Fidelity recovered only when a separate evidence reviewer holding the source was added (re-test 23 Sep: 9.5). |
-| deep-research-squad, 26 Aug 2026 (memory `project_deep_research_squad_skill`) | 4-persona coverage panel + verifier vs the stock single-model coverage script | Not strictly better. Single model won on checklist breadth and cost; panel won on depth and removed one false positive. The fix was a hybrid: cheap single-model checklist pass first, panel second. One seat (Cicero, policy) produced 0 usable gaps. |
+| Narrative Engine hook panel, 16 Sep 2026 (local ablation report) | 3-lens persona panel writing deck hooks vs a ~300-word single-writer prompt, blind judge | Panel made fidelity to the source worse (3.3 vs 7.3 on 10). Fidelity recovered only when a separate evidence reviewer holding the source was added (re-test 23 Sep: 9.5). |
+| deep-research-squad, 26 Aug 2026 (local build notes) | 4-persona coverage panel + verifier vs the stock single-model coverage script | Not strictly better. Single model won on checklist breadth and cost; panel won on depth and removed one false positive. The fix was a hybrid: cheap single-model checklist pass first, panel second. One seat (Cicero, policy) produced 0 usable gaps. |
 
 Both point the same way: panels add depth and angles, they lose breadth and source fidelity, and the fix in both cases was a non-persona step around the panel.
 
